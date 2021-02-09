@@ -1,8 +1,8 @@
 {
-  "name": "helioslauncher",
-  "version": "1.8.0",
-  "productName": "Helios Launcher",
-  "description": "Modded Minecraft Launcher",
+  "name": "turfu",
+  "version": "1.0.0",
+  "productName": "Turfu Launcher",
+  "description": "Launcher V2 de Turfu",
   "author": "Daniel Scalzi (https://github.com/dscalzi/)",
   "license": "UNLICENSED",
   "homepage": "https://github.com/dscalzi/HeliosLauncher",
