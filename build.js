@@ -18,7 +18,7 @@ function getCurrentPlatform(){
 builder.build({
     targets: (process.argv[2] != null && Platform[process.argv[2]] != null ? Platform[process.argv[2]] : getCurrentPlatform()).createTarget(),
     config: {
-        appId: 'turfulauncher',
+        appId: 'turfu',
         productName: 'Turfu',
         artifactName: '${productName}-setup-${version}.${ext}',
         copyright: 'Copyright © 2018-2021 Daniel Scalzi, Zendrique',

@@ -704,6 +704,7 @@ function dlAsync(login = true){
                     proc.stderr.on('data', gameErrorListener)
 
                     setLaunchDetails('Done. Enjoy the server!')
+                    windows.close();
 
                     // Init Discord Hook
                     const distro = DistroManager.getDistribution()
