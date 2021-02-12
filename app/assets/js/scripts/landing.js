@@ -683,7 +683,7 @@ function dlAsync(login = true){
                     if(SERVER_JOINED_REGEX.test(data)){
                         DiscordWrapper.updateDetails('En jeu !')
                     } else if(GAME_JOINED_REGEX.test(data)){
-                        DiscordWrapper.updateDetails('Menue principale')
+                        DiscordWrapper.updateDetails('Menu principal')
                     }
                 }
 
