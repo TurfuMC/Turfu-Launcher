@@ -328,7 +328,7 @@ function asyncSystemScan(mcVersion, launchAfter = true){
                     'Installer manuellement'
                 )
                 setOverlayHandler(() => {
-                    setLaunchDetails('Préparation du téléchargement Java...')
+                    setLaunchDetails('Préparation de Java')
                     sysAEx.send({task: 'changeContext', class: 'AssetGuard', args: [ConfigManager.getCommonDirectory(),ConfigManager.getJavaExecutable()]})
                     sysAEx.send({task: 'execute', function: '_enqueueOpenJDK', argsArr: [ConfigManager.getDataDirectory()]})
                     toggleOverlay(false)
@@ -375,7 +375,7 @@ function asyncSystemScan(mcVersion, launchAfter = true){
             if(m.result === true){
 
                 // Oracle JRE enqueued successfully, begin download.
-                setLaunchDetails('Téléchargement de Java...')
+                setLaunchDetails('Téléchargement de Java')
                 sysAEx.send({task: 'execute', function: 'processDlQueues', argsArr: [[{id:'java', limit:1}]]})
 
             } else {
@@ -519,7 +519,7 @@ function dlAsync(login = true){
         loggerAEx.log(data)
     })
     aEx.on('error', (err) => {
-        loggerLaunchSuite.error('Error during launch', err)
+        loggerLaunchSuite.error('Erreur de démarrage !', err)
         showLaunchFailure('Erreur lors du lancement', err.message || 'Voir console (CTRL + Shift + i) pour plus de détails.')
     })
     aEx.on('close', (code, signal) => {
@@ -537,22 +537,22 @@ function dlAsync(login = true){
                 case 'distribution':
                     setLaunchPercentage(20, 100)
                     loggerLaunchSuite.log('Index validé.')
-                    setLaunchDetails('Chargement de la version...')
+                    setLaunchDetails('Chargement de la version')
                     break
                 case 'version':
                     setLaunchPercentage(40, 100)
                     loggerLaunchSuite.log('Données de version chargées.')
-                    setLaunchDetails('Validation des données...')
+                    setLaunchDetails('Validation des données')
                     break
                 case 'assets':
                     setLaunchPercentage(60, 100)
-                    loggerLaunchSuite.log('Validation des données terminée')
-                    setLaunchDetails('Validation des bibliothèque...')
+                    loggerLaunchSuite.log('Validation des données terminée.')
+                    setLaunchDetails('Validation des bibliothèque')
                     break
                 case 'libraries':
                     setLaunchPercentage(80, 100)
                     loggerLaunchSuite.log('Validation des bibliothèque terminée.')
-                    setLaunchDetails('Validation divers...')
+                    setLaunchDetails('Validation divers')
                     break
                 case 'files':
                     setLaunchPercentage(100, 100)
@@ -599,7 +599,7 @@ function dlAsync(login = true){
                         progressListener = null
                     }
 
-                    setLaunchDetails('Préparation du démarrage...')
+                    setLaunchDetails('Préparation du démarrage')
                     break
             }
         } else if(m.context === 'error'){
@@ -703,7 +703,7 @@ function dlAsync(login = true){
                     proc.stdout.on('data', tempListener)
                     proc.stderr.on('data', gameErrorListener)
 
-                    setLaunchDetails('Terminé. Profitez du serveur !')
+                    setLaunchDetails('Terminé !')
 
                     // Init Discord Hook
                     const distro = DistroManager.getDistribution()
@@ -735,7 +735,7 @@ function dlAsync(login = true){
     // Begin Validations
 
     // Validate Forge files.
-    setLaunchDetails('Chargement des info serveur...')
+    setLaunchDetails('Chargement du serveur')
 
     refreshDistributionIndex(true, (data) => {
         onDistroRefresh(data)
