@@ -220,8 +220,8 @@ const refreshServerStatus = async function(fade = false){
     loggerLanding.log('Refreshing Server Status')
     const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
 
-    let pLabel = 'SERVER'
-    let pVal = 'OFFLINE'
+    let pLabel = 'Serveur'
+    let pVal = 'hors ligne'
 
     try {
         const serverURL = new URL('my://' + serv.getAddress())
@@ -683,7 +683,7 @@ function dlAsync(login = true){
                     if(SERVER_JOINED_REGEX.test(data)){
                         DiscordWrapper.updateDetails('En jeu !')
                     } else if(GAME_JOINED_REGEX.test(data)){
-                        DiscordWrapper.updateDetails('Menu principal')
+                        DiscordWrapper.updateDetails('En jeu !')
                     }
                 }
 
