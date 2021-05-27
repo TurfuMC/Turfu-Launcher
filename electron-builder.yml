@@ -1,5 +1,5 @@
-appId: 'turfulauncher'
-productName: 'Turfu Launcher'
+appId: 'turfu'
+productName: 'Turfu'
 artifactName: '${productName}-setup-${version}.${ext}'
 
 copyright: 'Copyright © 2018-2021 Daniel Scalzi, Zendrique'
@@ -39,7 +39,7 @@ mac:
 # Linux Configuration
 linux: 
   target: 'AppImage'
-  maintainer: 'Daniel Scalzi, Zendrique'
+  maintainer: 'Zendrique'
   vendor: 'Daniel Scalzi, Zendrique'
   synopsis: 'Une partie sur Turfu ?'
   description: 'Launcher officiel de TurfuMC.'
