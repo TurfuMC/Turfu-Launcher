@@ -1,9 +1,9 @@
 {
   "name": "turfu",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "productName": "Turfu Launcher",
   "description": "Une petite partie sur Turfu ?",
-  "author": "Daniel Scalzi (https://github.com/dscalzi/)",
+  "author": "Daniel Scalzi, TurfuMC",
   "license": "GPL-3.0",
   "homepage": "https://github.com/TurfuMC/Turfu-Launcher",
   "bugs": {
