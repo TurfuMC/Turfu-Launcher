@@ -5,9 +5,9 @@
   "description": "Une petite partie sur Turfu ?",
   "author": "Daniel Scalzi (https://github.com/dscalzi/)",
   "license": "GPL-3.0",
-  "homepage": "https://github.com/zendrique/Turfu-Launcher",
+  "homepage": "https://github.com/TurfuMC/Turfu-Launcher",
   "bugs": {
-    "url": "https://github.com/zendrique/Turfu-Launcher/issues"
+    "url": "https://github.com/TurfuMC/Turfu-Launcher/issues"
   },
   "private": true,
   "main": "index.js",
@@ -45,6 +45,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zendrique/Turfu-Launcher.git"
+    "url": "git+https://github.com/TurfuMC/Turfu-Launcher.git"
   }
 }
