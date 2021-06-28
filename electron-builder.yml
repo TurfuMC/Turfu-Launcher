@@ -2,7 +2,7 @@ appId: 'turfu'
 productName: 'Turfu'
 artifactName: '${productName}-setup-${version}.${ext}'
 
-copyright: 'Copyright © 2018-2021 Daniel Scalzi, Zendrique'
+copyright: 'Copyright © 2018-2021 Daniel Scalzi, TrufuMC'
 
 asar: true
 compression: 'maximum'
@@ -39,10 +39,10 @@ mac:
 # Linux Configuration
 linux: 
   target: 'AppImage'
-  maintainer: 'Zendrique'
-  vendor: 'Daniel Scalzi, Zendrique'
+  maintainer: 'TurfuMC'
+  vendor: 'Daniel Scalzi, TurfuMC'
   synopsis: 'Une partie sur Turfu ?'
-  description: 'Launcher officiel de TurfuMC.'
+  description: 'Launcher minecraft officiel de TurfuMC.'
   category: 'Game'
 
 
