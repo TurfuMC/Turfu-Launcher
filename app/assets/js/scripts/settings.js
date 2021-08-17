@@ -359,10 +359,10 @@ function bindAuthAccountLogOut(){
             if(Object.keys(ConfigManager.getAuthAccounts()).length === 1){
                 isLastAccount = true
                 setOverlayContent(
-                    'Attention<br>Ceci est votre dernier compte',
-                    'Pour utiliser le launcher, vous devez être connecté à au moins un compte. Vous devrez vous reconnecter après.<br><br>Voulez-vous vraiment vous déconnecter ?',
-                    'Oui',
-                    'Annuler'
+                    'Warning<br>This is Your Last Account',
+                    'In order to use the launcher you must be logged into at least one account. You will need to login again after.<br><br>Are you sure you want to log out?',
+                    'I\'m Sure',
+                    'Cancel'
                 )
                 setOverlayHandler(() => {
                     processLogOut(val, isLastAccount)
@@ -444,12 +444,12 @@ function populateAuthAccounts(){
         const acc = authAccounts[val]
         authAccountStr += `<div class="settingsAuthAccount" uuid="${acc.uuid}">
             <div class="settingsAuthAccountLeft">
-                <img class="settingsAuthAccountImage" alt="${acc.displayName}" src="https://crafatar.com/renders/body/${acc.uuid}?scale=3&default=MHF_Steve&overlay">
+                <img class="settingsAuthAccountImage" alt="${acc.displayName}" src="https://mc-heads.net/body/${acc.uuid}/60">
             </div>
             <div class="settingsAuthAccountRight">
                 <div class="settingsAuthAccountDetails">
                     <div class="settingsAuthAccountDetailPane">
-                        <div class="settingsAuthAccountDetailTitle">Pseudo</div>
+                        <div class="settingsAuthAccountDetailTitle">Username</div>
                         <div class="settingsAuthAccountDetailValue">${acc.displayName}</div>
                     </div>
                     <div class="settingsAuthAccountDetailPane">
@@ -458,9 +458,9 @@ function populateAuthAccounts(){
                     </div>
                 </div>
                 <div class="settingsAuthAccountActions">
-                    <button class="settingsAuthAccountSelect" ${selectedUUID === acc.uuid ? 'selected>Compte sélectionné &#10004;' : '>Select Account'}</button>
+                    <button class="settingsAuthAccountSelect" ${selectedUUID === acc.uuid ? 'selected>Selected Account &#10004;' : '>Select Account'}</button>
                     <div class="settingsAuthAccountWrapper">
-                        <button class="settingsAuthAccountLogOut">Se déconnecter</button>
+                        <button class="settingsAuthAccountLogOut">Log Out</button>
                     </div>
                 </div>
             </div>
@@ -666,7 +666,7 @@ function resolveDropinModsForUI(){
                             <div class="settingsModDetails">
                                 <span class="settingsModName">${dropin.name}</span>
                                 <div class="settingsDropinRemoveWrapper">
-                                    <button class="settingsDropinRemoveButton" remmod="${dropin.fullName}">Retirer</button>
+                                    <button class="settingsDropinRemoveButton" remmod="${dropin.fullName}">Remove</button>
                                 </div>
                             </div>
                         </div>
@@ -694,8 +694,8 @@ function bindDropinModsRemoveButton(){
                 document.getElementById(fullName).remove()
             } else {
                 setOverlayContent(
-                    `Échec de la suppression<br>du Drop-in Mod ${fullName}`,
-                    'Assurez-vous que le fichier n\'est pas utilisé et réessayez.',
+                    `Failed to Delete<br>Drop-in Mod ${fullName}`,
+                    'Make sure the file is not in use and try again.',
                     'Okay'
                 )
                 setOverlayHandler(null)
@@ -749,7 +749,7 @@ function saveDropinModConfiguration(){
                 DropinModUtil.toggleDropinMod(CACHE_SETTINGS_MODS_DIR, dropin.fullName, dropinUIEnabled).catch(err => {
                     if(!isOverlayVisible()){
                         setOverlayContent(
-                            'Échec du basculement<br>de n ou plusieurs Drop-in Mods',
+                            'Failed to Toggle<br>One or More Drop-in Mods',
                             err.message,
                             'Okay'
                         )
@@ -885,7 +885,7 @@ function loadSelectedServerOnModsTab(){
                         <path class="cls-1" d="M100.93,65.54C89,62,68.18,55.65,63.54,52.13c2.7-5.23,18.8-19.2,28-27.55C81.36,31.74,63.74,43.87,58.09,45.3c-2.41-5.37-3.61-26.52-4.37-39-.77,12.46-2,33.64-4.36,39-5.7-1.46-23.3-13.57-33.49-20.72,9.26,8.37,25.39,22.36,28,27.55C39.21,55.68,18.47,62,6.52,65.55c12.32-2,33.63-6.06,39.34-4.9-.16,5.87-8.41,26.16-13.11,37.69,6.1-10.89,16.52-30.16,21-33.9,4.5,3.79,14.93,23.09,21,34C70,86.84,61.73,66.48,61.59,60.65,67.36,59.49,88.64,63.52,100.93,65.54Z"/>
                         <circle class="cls-2" cx="53.73" cy="53.9" r="38"/>
                     </svg>
-                    <span class="serverListingStarTooltip">Serveur principal</span>
+                    <span class="serverListingStarTooltip">Main Server</span>
                 </div>` : ''}
             </div>
         </div>
@@ -1141,9 +1141,9 @@ function populateJavaExecDetails(execPath){
         if(v.valid){
             const vendor = v.vendor != null ? ` (${v.vendor})` : ''
             if(v.version.major < 9) {
-                settingsJavaExecDetails.innerHTML = `Sélectionné : Java ${v.version.major} mise à jour ${v.version.update} (x${v.arch})${vendor}`
+                settingsJavaExecDetails.innerHTML = `Selected: Java ${v.version.major} Update ${v.version.update} (x${v.arch})${vendor}`
             } else {
-                settingsJavaExecDetails.innerHTML = `Sélectionné : Java ${v.version.major}.${v.version.minor}.${v.version.revision} (x${v.arch})${vendor}`
+                settingsJavaExecDetails.innerHTML = `Selected: Java ${v.version.major}.${v.version.minor}.${v.version.revision} (x${v.arch})${vendor}`
             }
         } else {
             settingsJavaExecDetails.innerHTML = 'Invalid Selection'
@@ -1197,11 +1197,11 @@ function isPrerelease(version){
 function populateVersionInformation(version, valueElement, titleElement, checkElement){
     valueElement.innerHTML = version
     if(isPrerelease(version)){
-        titleElement.innerHTML = 'Version Beta'
+        titleElement.innerHTML = 'Pre-release'
         titleElement.style.color = '#ff886d'
         checkElement.style.background = '#ff886d'
     } else {
-        titleElement.innerHTML = 'Version Stable'
+        titleElement.innerHTML = 'Stable Release'
         titleElement.style.color = null
         checkElement.style.background = null
     }
@@ -1220,7 +1220,7 @@ function populateAboutVersionInformation(){
  */
 function populateReleaseNotes(){
     $.ajax({
-        url: 'https://github.com/TurfuMC/Turfu-Launcher/releases.atom',
+        url: 'https://github.com/dscalzi/HeliosLauncher/releases.atom',
         success: (data) => {
             const version = 'v' + remote.app.getVersion()
             const entries = $(data).find('entry')
@@ -1240,7 +1240,7 @@ function populateReleaseNotes(){
         },
         timeout: 2500
     }).catch(err => {
-        settingsAboutChangelogText.innerHTML = 'Échec du chargement des notes de mise à jour.'
+        settingsAboutChangelogText.innerHTML = 'Failed to load release notes.'
     })
 }
 
@@ -1288,27 +1288,27 @@ function settingsUpdateButtonStatus(text, disabled = false, handler = null){
  */
 function populateSettingsUpdateInformation(data){
     if(data != null){
-        settingsUpdateTitle.innerHTML = `Nouvelle ${isPrerelease(data.version) ? 'Version Beta' : 'Version Stable'} Dsiponible`
+        settingsUpdateTitle.innerHTML = `New ${isPrerelease(data.version) ? 'Pre-release' : 'Release'} Available`
         settingsUpdateChangelogCont.style.display = null
         settingsUpdateChangelogTitle.innerHTML = data.releaseName
         settingsUpdateChangelogText.innerHTML = data.releaseNotes
         populateVersionInformation(data.version, settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
         
         if(process.platform === 'darwin'){
-            settingsUpdateButtonStatus('Télécharger depuis GitHub<span style="font-size: 10px;color: gray;text-shadow: none !important;">Fermez le launcher et exécutez le dmg pour mettre à jour.</span>', false, () => {
+            settingsUpdateButtonStatus('Download from GitHub<span style="font-size: 10px;color: gray;text-shadow: none !important;">Close the launcher and run the dmg to update.</span>', false, () => {
                 shell.openExternal(data.darwindownload)
             })
         } else {
-            settingsUpdateButtonStatus('Téléchargement...', true)
+            settingsUpdateButtonStatus('Downloading..', true)
         }
     } else {
-        settingsUpdateTitle.innerHTML = 'Vous exécutez la dernière version'
+        settingsUpdateTitle.innerHTML = 'You Are Running the Latest Version'
         settingsUpdateChangelogCont.style.display = 'none'
         populateVersionInformation(remote.app.getVersion(), settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
-        settingsUpdateButtonStatus('Rechercher les mises à jour', false, () => {
+        settingsUpdateButtonStatus('Check for Updates', false, () => {
             if(!isDev){
                 ipcRenderer.send('autoUpdateAction', 'checkForUpdate')
-                settingsUpdateButtonStatus('Recherche de mises à jour...', true)
+                settingsUpdateButtonStatus('Checking for Updates..', true)
             }
         })
     }
