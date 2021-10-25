@@ -322,9 +322,9 @@ function asyncSystemScan(mcVersion, launchAfter = true){
                 // If the result is null, no valid Java installation was found.
                 // Show this information to the user.
                 setOverlayContent(
-                    'Incompatible<br>Installation Java trouvée',
-                    'Pour rejoindre Turfu, vous avez besoin d\'une installation 64 bits de Java 8. Souhaitez-vous que nous installions une copie ? En installant, vous acceptez <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">Le contrat de licence d\'Oracle</a>.',
-                    'Installez Java',
+                    'Installation de Java trouvée<br>Non compatible',
+                    'Pour rejoindre Turfu, vous avez besoin d\'une installation 64 bits de Java 8. Souhaitez-vous que nous installions une copie ?',
+                    'Installer Java',
                     'Installer manuellement'
                 )
                 setOverlayHandler(() => {
